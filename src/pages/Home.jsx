@@ -4,6 +4,8 @@ import '../App.css'
 
 import Navigation from '../components/Navigation'
 
+import sagamiharaImage from '../assets/sagamihara_residence.png'
+
 function Home() {
     useEffect(() => {
         // Simple scroll reveal effect
@@ -17,7 +19,21 @@ function Home() {
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        return () => observer.disconnect();
+        // Parallax effect
+        const handleScroll = () => {
+            const scrolled = window.scrollY;
+            const heroBg = document.querySelector('.hero-bg');
+            if (heroBg) {
+                heroBg.style.transform = `translateY(${scrolled * 0.5}px) scale(1.1)`;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            observer.disconnect();
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     return (
@@ -28,14 +44,16 @@ function Home() {
                 <div className="hero-bg animate-zoom"></div>
                 <div className="hero-overlay"></div>
                 <div className="container" style={{ position: 'relative', zIndex: 1 }}>
-                    <h1 className="giant-text animate-reveal" style={{ color: '#fff' }}>
+                    <h1 className="giant-text animate-reveal">
                         Finest<br />
                         Residence<br />
                         Factory
                     </h1>
-                    <div className="hero-sub animate-in delay-3" style={{ color: '#fff' }}>
+                    <div className="hero-sub animate-in delay-3">
                         <p className="hero-copy">資産としての住まい、生涯のパートナー。</p>
-                        <p style={{ marginTop: '1rem', fontWeight: 'bold', opacity: 0.9 }}>独創的な "Wholesale Company" を目指して。</p>
+                        <p style={{ marginTop: '1.5rem', fontWeight: 600, opacity: 0.9, letterSpacing: '0.05em' }}>
+                            独創的な "Wholesale Company" を目指して。
+                        </p>
                     </div>
                 </div>
             </header>
@@ -173,7 +191,7 @@ function Home() {
                 <div className="split-layout reveal" style={{ marginBottom: '6rem' }}>
                     <div className="split-image">
                         <div className="status-badge">ON SALE</div>
-                        <img src="/src/assets/sagamihara_residence.png" alt="Project 1" />
+                        <img src={sagamiharaImage} alt="Project 1" />
                     </div>
                     <div className="split-content">
                         <h3 className="section-heading" style={{ fontSize: '2.5rem' }}>SAGAMIHARA<br />RESIDENCE</h3>

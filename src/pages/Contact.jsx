@@ -30,95 +30,131 @@ function Contact() {
         <div className="app">
             <Navigation />
 
-            <div className="container" style={{ paddingTop: '120px', paddingBottom: '80px' }}>
+            <div className="container" style={{ paddingTop: '160px', paddingBottom: '120px' }}>
                 <h1 className="section-heading" style={{ marginBottom: '4rem' }}>CONTACT</h1>
 
                 {submitted ? (
-                    <div className="reveal visible" style={{ textAlign: 'center', padding: '4rem 0' }}>
-                        <h2 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Thank you for your inquiry.</h2>
+                    <div className="reveal visible" style={{ textAlign: 'center', padding: '6rem 0' }}>
+                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', fontWeight: 900 }}>Thank you for your inquiry.</h2>
                         <p className="text-body">
                             お問い合わせありがとうございます。<br />
                             担当者より折り返しご連絡させていただきます。
                         </p>
-                        <Link to="/" className="btn-primary" style={{ marginTop: '2rem', display: 'inline-block' }}>Back to Home</Link>
+                        <Link to="/" className="btn-primary" style={{ marginTop: '3rem', display: 'inline-block' }}>Back to Home</Link>
                     </div>
                 ) : (
-                    <div className="reveal visible" style={{ maxWidth: '800px', margin: '0 auto' }}>
-                        <p className="text-body" style={{ marginBottom: '3rem' }}>
-                            物件に関するお問い合わせ、資料請求、その他ご質問等は、<br />
-                            下記フォームよりお気軽にお問い合わせください。
-                        </p>
+                    <div className="contact-layout reveal visible">
+                        {/* Left Column: Info */}
+                        <div className="contact-info">
+                            <h2 style={{ fontSize: '2rem', fontWeight: 900, marginBottom: '2rem', lineHeight: 1.2 }}>
+                                We'd love to<br />hear from you.
+                            </h2>
+                            <p className="text-body" style={{ marginBottom: '3rem' }}>
+                                物件に関するお問い合わせ、資料請求、その他ご質問等は、
+                                下記フォームよりお気軽にお問い合わせください。
+                            </p>
 
-                        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                            <div className="form-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>お名前 (Name) <span style={{ color: 'red' }}>*</span></label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                    style={{ width: '100%', padding: '1rem', border: '1px solid #ddd', borderRadius: '4px', fontSize: '1rem' }}
-                                    placeholder="山田 太郎"
-                                />
+                            <div style={{ marginBottom: '4rem' }}>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#0f172a', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>PHONE</h3>
+                                <p style={{ fontSize: '3.5rem', fontWeight: 900, fontFamily: 'Cormorant Garamond, serif', lineHeight: 1 }}>03-5226-6094</p>
+                                <p style={{ fontSize: '1.1rem', color: '#666', marginTop: '1rem', fontWeight: 700 }}>10:00 - 18:00 (土日祝除く)</p>
                             </div>
 
-                            <div className="form-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>メールアドレス (Email) <span style={{ color: 'red' }}>*</span></label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    style={{ width: '100%', padding: '1rem', border: '1px solid #ddd', borderRadius: '4px', fontSize: '1rem' }}
-                                    placeholder="info@example.com"
-                                />
+                            <div>
+                                <h3 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#0f172a', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>ADDRESS</h3>
+                                <p style={{ fontSize: '1.3rem', lineHeight: 1.8, fontWeight: 700 }}>
+                                    〒102-0093<br />
+                                    東京都千代田区平河町2-4-5<br />
+                                    平河町Kビル8階
+                                </p>
                             </div>
+                        </div>
 
-                            <div className="form-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>電話番号 (Phone)</label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    style={{ width: '100%', padding: '1rem', border: '1px solid #ddd', borderRadius: '4px', fontSize: '1rem' }}
-                                    placeholder="03-1234-5678"
-                                />
-                            </div>
+                        {/* Right Column: Form */}
+                        <div className="contact-form-container">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label className="form-label">
+                                        お名前 (Name) <span className="required-mark">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        className="form-input"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="山田 太郎"
+                                    />
+                                </div>
 
-                            <div className="form-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>お問い合わせ種別 (Inquiry Type)</label>
-                                <select
-                                    name="type"
-                                    value={formData.type}
-                                    onChange={handleChange}
-                                    style={{ width: '100%', padding: '1rem', border: '1px solid #ddd', borderRadius: '4px', fontSize: '1rem', backgroundColor: '#fff' }}
-                                >
-                                    <option>資料請求 (Request Info)</option>
-                                    <option>物件見学 (View Property)</option>
-                                    <option>その他 (Other)</option>
-                                </select>
-                            </div>
+                                <div className="form-group">
+                                    <label className="form-label">
+                                        メールアドレス (Email) <span className="required-mark">*</span>
+                                    </label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        className="form-input"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                        placeholder="info@example.com"
+                                    />
+                                </div>
 
-                            <div className="form-group">
-                                <label style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', fontSize: '0.9rem' }}>お問い合わせ内容 (Message) <span style={{ color: 'red' }}>*</span></label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows="6"
-                                    style={{ width: '100%', padding: '1rem', border: '1px solid #ddd', borderRadius: '4px', fontSize: '1rem', resize: 'vertical' }}
-                                    placeholder="ご質問やご要望をご記入ください。"
-                                ></textarea>
-                            </div>
+                                <div className="form-group">
+                                    <label className="form-label">
+                                        電話番号 (Phone)
+                                    </label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        className="form-input"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        placeholder="03-1234-5678"
+                                    />
+                                </div>
 
-                            <div style={{ marginTop: '2rem', textAlign: 'center' }}>
-                                <button type="submit" className="btn-primary" style={{ minWidth: '200px', cursor: 'pointer' }}>送信する (Submit)</button>
-                            </div>
-                        </form>
+                                <div className="form-group">
+                                    <label className="form-label">
+                                        お問い合わせ種別 (Inquiry Type)
+                                    </label>
+                                    <div style={{ position: 'relative' }}>
+                                        <select
+                                            name="type"
+                                            className="form-select"
+                                            value={formData.type}
+                                            onChange={handleChange}
+                                        >
+                                            <option>資料請求 (Request Info)</option>
+                                            <option>物件見学 (View Property)</option>
+                                            <option>その他 (Other)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <label className="form-label">
+                                        お問い合わせ内容 (Message) <span className="required-mark">*</span>
+                                    </label>
+                                    <textarea
+                                        name="message"
+                                        className="form-textarea"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        required
+                                        rows="6"
+                                        placeholder="ご質問やご要望をご記入ください。"
+                                    ></textarea>
+                                </div>
+
+                                <div style={{ marginTop: '3rem', textAlign: 'right' }}>
+                                    <button type="submit" className="btn-primary" style={{ minWidth: '200px', cursor: 'pointer' }}>送信する (Submit)</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 )}
             </div>

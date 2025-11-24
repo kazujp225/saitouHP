@@ -1,9 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import '../App.css'
 
 function Navigation() {
     const [isOpen, setIsOpen] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false)
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true)
+            } else {
+                setIsScrolled(false)
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll)
+        return () => window.removeEventListener('scroll', handleScroll)
+    }, [])
 
     const toggleMenu = () => {
         setIsOpen(!isOpen)
@@ -14,7 +28,7 @@ function Navigation() {
     }
 
     return (
-        <nav className="nav">
+        <nav className={`nav ${isScrolled ? 'scrolled' : ''}`}>
             <div className="nav-logo">
                 <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }} onClick={closeMenu}>
                     ファイネスト レジデンス ファクトリー株式会社
