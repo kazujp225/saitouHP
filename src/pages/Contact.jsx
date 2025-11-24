@@ -56,13 +56,13 @@ function Contact() {
 
                             <div style={{ marginBottom: '4rem' }}>
                                 <h3 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#0f172a', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>PHONE</h3>
-                                <p style={{ fontSize: '3.5rem', fontWeight: 900, fontFamily: 'Cormorant Garamond, serif', lineHeight: 1 }}>03-5226-6094</p>
+                                <p className="contact-phone">03-5226-6094</p>
                                 <p style={{ fontSize: '1.1rem', color: '#666', marginTop: '1rem', fontWeight: 700 }}>10:00 - 18:00 (土日祝除く)</p>
                             </div>
 
                             <div>
                                 <h3 style={{ fontSize: '1.2rem', fontWeight: 900, color: '#0f172a', marginBottom: '1.5rem', letterSpacing: '0.1em' }}>ADDRESS</h3>
-                                <p style={{ fontSize: '1.3rem', lineHeight: 1.8, fontWeight: 700 }}>
+                                <p className="contact-address">
                                     〒102-0093<br />
                                     東京都千代田区平河町2-4-5<br />
                                     平河町Kビル8階

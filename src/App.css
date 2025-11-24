@@ -725,6 +725,21 @@ body {
   font-size: 1.1rem;
 }
 
+/* Contact Page Styles */
+.contact-phone {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: var(--font-serif-en);
+  line-height: 1;
+  color: var(--color-trust-blue);
+}
+
+.contact-address {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   :root {
@@ -760,9 +775,34 @@ body {
     gap: 4rem;
   }
 
+  /* Ecosystem Mobile */
   .ecosystem-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .eco-card {
+    padding: 2.5rem 2rem;
+    /* Reduced padding */
+  }
+
+  .eco-icon {
+    font-size: 3.5rem;
+    /* Smaller icon */
+  }
+
+  .eco-title {
+    font-size: 1.2rem;
+  }
+
+  /* Contact Mobile */
+  .contact-phone {
+    font-size: 2.2rem;
+    /* Smaller phone number */
+  }
+
+  .contact-address {
+    font-size: 1.1rem;
   }
 
   .gateway-grid {
