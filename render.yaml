@@ -1,13 +1,13 @@
 services:
   - type: web
     name: saitou-hp
-    runtime: static
+    runtime: node
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    startCommand: npm run start
     envVars:
       - key: NODE_VERSION
         value: 20
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+      - key: RESEND_API_KEY
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false

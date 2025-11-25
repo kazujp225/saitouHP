@@ -13,17 +13,36 @@ function Contact() {
         message: ''
     })
     const [submitted, setSubmitted] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData(prev => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        // Simulate form submission
-        console.log('Form submitted:', formData)
-        setSubmitted(true)
+        setLoading(true)
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+
+            if (response.ok) {
+                setSubmitted(true)
+            } else {
+                alert('送信に失敗しました。もう一度お試しください。')
+            }
+        } catch (error) {
+            alert('送信に失敗しました。もう一度お試しください。')
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -151,7 +170,7 @@ function Contact() {
                                 </div>
 
                                 <div style={{ marginTop: '3rem', textAlign: 'right' }}>
-                                    <button type="submit" className="btn-primary" style={{ minWidth: '200px', cursor: 'pointer' }}>送信する (Submit)</button>
+                                    <button type="submit" className="btn-primary" style={{ minWidth: '200px', cursor: 'pointer' }} disabled={loading}>{loading ? '送信中...' : '送信する (Submit)'}</button>
                                 </div>
                             </form>
                         </div>
