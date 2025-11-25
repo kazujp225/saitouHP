@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import { Resend } from 'resend';
 import path from 'path';
@@ -45,7 +46,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // SPAのルーティング対応
-app.get('*', (req, res) => {
+app.get('/{*path}', (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 

@@ -40,6 +40,7 @@ function Navigation() {
                 <Link to="/" className="nav-item">Home</Link>
                 <a href="/#projects" className="nav-item">Projects</a>
                 <a href="/#company" className="nav-item">Company</a>
+                <Link to="/blog" className="nav-item">Blog</Link>
                 <Link to="/contact" className="nav-item">Contact</Link>
             </div>
 
@@ -54,6 +55,7 @@ function Navigation() {
                     <Link to="/" className="mobile-nav-item" onClick={closeMenu}>Home</Link>
                     <a href="/#projects" className="mobile-nav-item" onClick={closeMenu}>Projects</a>
                     <a href="/#company" className="mobile-nav-item" onClick={closeMenu}>Company</a>
+                    <Link to="/blog" className="mobile-nav-item" onClick={closeMenu}>Blog</Link>
                     <Link to="/contact" className="mobile-nav-item" onClick={closeMenu}>Contact</Link>
                     <Link to="/privacy" className="mobile-nav-item" onClick={closeMenu}>Privacy Policy</Link>
                 </div>
