@@ -747,6 +747,10 @@ body {
     --header-height: 70px;
   }
 
+  .nav-logo {
+    display: none;
+  }
+
   .desktop-only {
     display: none;
   }
